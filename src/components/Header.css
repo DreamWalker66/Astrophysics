@@ -1,0 +1,38 @@
+/* Стили шапки сайта */
+.site-header {
+    background-color: #0a0a23;
+    color: white;
+    padding: 0px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  nav button {
+    margin-left: 16px;
+    padding: 8px 16px;
+    background-color: #1e1e3f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  nav button:hover {
+    background-color: #333366;
+  }

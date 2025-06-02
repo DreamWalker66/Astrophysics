@@ -1,0 +1,39 @@
+/* src/App.css */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #0d1117;
+  color: #ffffff;
+}
+
+.app {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main-content {
+  text-align: center;
+}
+
+.btn {
+  margin-top: 2rem;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #1f6feb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #388bfd;
+}
