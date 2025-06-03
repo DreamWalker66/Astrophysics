@@ -17,6 +17,7 @@ import neptuneTexture from '../assets/textures/neptune.jpg';
 import plutoTexture from '../assets/textures/pluto.jpg';
 import ringTexture from '../assets/textures/rings.png';
 
+// Орбита
 const Orbit = ({ radius, visible }) =>
   visible ? (
     <mesh rotation={[Math.PI / 2, 0, 0]}>
@@ -25,27 +26,37 @@ const Orbit = ({ radius, visible }) =>
     </mesh>
   ) : null;
 
+// Планета
 const Planet = ({ size, distance, speed, texture, withRings, showOrbit }) => {
   const orbitRef = useRef();
+  const planetRef = useRef();
+  const ringRef = useRef();
   const map = useLoader(THREE.TextureLoader, texture);
+  const ringMap = useLoader(THREE.TextureLoader, ringTexture);
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    orbitRef.current.rotation.y = t * speed;
+    orbitRef.current.rotation.y = t * speed;        // Вращение вокруг Солнца
+    if (planetRef.current) planetRef.current.rotation.y = t * 0.5; // Вращение вокруг оси
+    if (ringRef.current) ringRef.current.rotation.z = t * 0.5;     // Вращение колец
   });
 
   return (
     <group ref={orbitRef}>
       <Orbit radius={distance} visible={showOrbit} />
-      <mesh position={[distance, 0, 0]}>
+      <mesh ref={planetRef} position={[distance, 0, 0]}>
         <sphereGeometry args={[size, 32, 32]} />
         <meshStandardMaterial map={map} />
       </mesh>
       {withRings && (
-        <mesh position={[distance, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh
+          ref={ringRef}
+          position={[distance, 0, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+        >
           <ringGeometry args={[size * 1.4, size * 2, 64]} />
           <meshBasicMaterial
-            map={useLoader(THREE.TextureLoader, ringTexture)}
+            map={ringMap}
             transparent
             opacity={0.6}
             side={THREE.DoubleSide}
@@ -56,6 +67,7 @@ const Planet = ({ size, distance, speed, texture, withRings, showOrbit }) => {
   );
 };
 
+// Главный компонент
 const SolarSystem = () => {
   const [showOrbits, setShowOrbits] = useState(true);
   const sunMap = useLoader(THREE.TextureLoader, sunTexture);
@@ -86,7 +98,7 @@ const SolarSystem = () => {
         <Planet size={0.5} distance={75} speed={0.1} texture={plutoTexture} showOrbit={showOrbits} />
       </Canvas>
 
-      {/* Переключатель */}
+      {/* Переключатель орбит */}
       <label htmlFor="toggle-orbits" className="toggle-switch visualization-toggle">
         <input
           id="toggle-orbits"

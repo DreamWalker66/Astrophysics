@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import TopicsPage from './pages/TopicsPage';
 import TopicDetailPage from './pages/TopicDetailPage';
+import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
 
 const App = () => {
   return (
@@ -15,6 +17,10 @@ const App = () => {
         <Route path="/topics" element={<TopicsPage />} />
         {/* Выбранная тема */}
         <Route path="/topics/:id" element={<TopicDetailPage />} />
+        {/* Контактная страница */}
+        <Route path="/contact" element={<ContactPage />} />
+        {/* Страница о нас */}
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </Router>
   );

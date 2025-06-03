@@ -287,3 +287,19 @@ body {
 .toggle-switch input:checked + .slider::before {
   transform: translateX(24px);
 }
+
+/* Контактная страница */
+.page-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #1e1e3f;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info p {
+  margin: 12px 0;
+  font-size: 18px;
+}

@@ -1,17 +1,32 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <header className="site-header">
       <div className="header-content">
-        <h1 className="logo" onClick={() => navigate('/')}>AstroScience</h1>
-        <nav>
-          <button onClick={() => navigate('/')}>Главная</button>
-          <button onClick={() => navigate('/topics')}>Темы</button>
+        <div className="logo" onClick={() => navigate('/')}>
+          AstroScience
+        </div>
+        <nav className="menu">
+          {!isActive('/') && (
+            <button onClick={() => navigate('/')}>Главная</button>
+          )}
+          {!isActive('/topics') && (
+            <button onClick={() => navigate('/topics')}>Темы</button>
+          )}
+          {!isActive('/contact') && (
+            <button onClick={() => navigate('/contact')}>Контакты</button>
+          )}
+          {!isActive('/about') && (
+            <button onClick={() => navigate('/about')}>О нас</button>
+          )}
         </nav>
       </div>
     </header>
