@@ -13,7 +13,7 @@ const ContactPage = () => {
 
                 <div className="contact-info">
                     <p><strong>Email:</strong> astrophysics.study@example.com</p>
-                    <p><strong>Телефон:</strong> +7 (900) 123-45-67</p>
+                    <p><strong>Телефон:</strong> +996 (703) 6**-*59</p>
                     <p><strong>Адрес:</strong> Галактика Млечный Путь, Земля, Континент Евразия</p>
                 </div>
             </div>
