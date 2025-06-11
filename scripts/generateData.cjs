@@ -1,0 +1,39 @@
+const fs = require('fs');
+const path = require('path');
+
+// === Данные по планетам ===
+const planets = [
+  { id: 1, name: 'Меркурий', type: 'Планета', distanceFromSun: 57.9, radius: 0.7, orbitSpeed: 0.8 },
+  { id: 2, name: 'Венера', type: 'Планета', distanceFromSun: 108.2, radius: 1, orbitSpeed: 0.6 },
+  { id: 3, name: 'Земля', type: 'Планета', distanceFromSun: 149.6, radius: 1.1, orbitSpeed: 0.5 },
+  { id: 4, name: 'Марс', type: 'Планета', distanceFromSun: 227.9, radius: 0.9, orbitSpeed: 0.45 },
+  { id: 5, name: 'Юпитер', type: 'Планета', distanceFromSun: 778.5, radius: 2.5, orbitSpeed: 0.3 },
+  { id: 6, name: 'Сатурн', type: 'Планета', distanceFromSun: 1433.5, radius: 2.2, orbitSpeed: 0.25, hasRings: true },
+  { id: 7, name: 'Уран', type: 'Планета', distanceFromSun: 2872.5, radius: 1.8, orbitSpeed: 0.2 },
+  { id: 8, name: 'Нептун', type: 'Планета', distanceFromSun: 4495.1, radius: 1.6, orbitSpeed: 0.15 },
+  { id: 9, name: 'Плутон', type: 'Карликовая планета', distanceFromSun: 5906.4, radius: 0.5, orbitSpeed: 0.1 }
+];
+
+// === Данные по темам ===
+const topics = [
+  { id: 1, title: 'Солнечная система', description: 'Планеты, спутники и их движение вокруг Солнца.' },
+  { id: 2, title: 'Звезды и галактики', description: 'Как устроены звезды и галактические структуры.' },
+  { id: 3, title: 'Чёрные дыры', description: 'Феномен чёрных дыр и их свойства.' },
+  { id: 4, title: 'Космология', description: 'Происхождение, структура и эволюция Вселенной.' },
+  { id: 5, title: 'Экзопланеты', description: 'Планеты за пределами Солнечной системы и методы их поиска.' }
+];
+
+// === Объединяем всё ===
+const data = { planets, topics };
+
+// === Путь к файлу ===
+const outputPath = path.join(__dirname, '../public/data.json');
+
+// === Запись файла ===
+fs.writeFile(outputPath, JSON.stringify(data, null, 2), 'utf8', err => {
+  if (err) {
+    console.error('Ошибка при записи файла:', err);
+  } else {
+    console.log('Файл data.json успешно создан в папке public/');
+  }
+});
